@@ -27,6 +27,13 @@ class CircularBufferTest {
     }
 
     @Test
+    void constructorThrowsExceptionWhenSizeIsZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CircularBuffer<>(0);
+        });
+    }
+
+    @Test
     void putThrowsExceptionWhenBufferIsFull() {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             CircularBuffer<Integer> testInstance = new CircularBuffer<>(3);
